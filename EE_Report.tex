@@ -85,46 +85,43 @@ Impact of Mesh Density and Iterations on Turbulent Flow Prediction Accuracy for 
 
 \section{Introduction}
 
-This investigation examines how computational time invested in mesh density and iterations affects the accuracy of turbulent flow characteristic predictions for complex geometries using the k-epsilon computational model in ANSYS.
-
 \subsection{Background}
 
-\subsubsection{IB Fluid Drag Formula}
+Ib fluid drag formula:
 
-The International Baccalaureate (IB) provides a simplified equation for fluid drag on objects: $F_{drag} = 6\pi\eta rv$, which assumes all objects are spherical and flow is laminar. This creates significant limitations that computational simulations should eliminate.
+The IB supplies a simplified equation and theory behind fluid drags on objects, F rv d = 6πηr, which assumes all objects are round, and flow is laminar, this creates allot of limitations that the simulations should eliminate
 
-\subsubsection{Computational Fluid Dynamics (CFD)}
+CFD: 
 
-Computational fluid dynamics simulations are computer-based simulations of fluid flow used to analyze and solve problems in fluid flow, heat transfer, and related phenomena. They rely on sophisticated software and computational power to simulate complex situations that are difficult to replicate experimentally.
+Computational fluid dynamics simulations are computer simulations of fluid flow. They are used to analyse and solve problems in fluid flow, heat transfer and similar activities. They rely on heavy software and computational power to simulate difficult situations which are hard to simulate experimentally. 
 
-CFD involves numerous physics equations, particularly the Navier-Stokes and Reynolds equations, to calculate pressure, velocity, temperature, and density of fluids over time in various scenarios. This enables calculation of drag forces and is crucial in various industries including:
-\begin{itemize}
-    \item Aerodynamics (aircraft design, drag reduction)
-    \item Automotive engineering (vehicle shape optimization for fuel efficiency)
-    \item Energy (wind turbine modeling, heat exchangers)
-    \item Medicine (blood flow analysis in arteries)
-\end{itemize}
+It involves a lot of physics equations, especially the Navier stokes and the Reynolds equations, to calculate pressure velocity, temperature, and density of a fluid over time in different situations, from which drag can also be calculated. It is very important in various industries: Aerodynamics (e.g., aircraft design, drag reduction), Automotive engineering (e.g., optimizing car shapes for fuel efficiency), Energy (e.g., modeling wind turbines, heat exchangers), Medicine (e.g., studying blood flow in arteries).
 
-\subsubsection{K-Epsilon Model}
+K-epsilon:
 
-The k-epsilon model is a popular turbulence model used in many amateur and professional simulations that don't require specialized models. Developed by Launder and Spalding in 1974, it improved upon older models like the mixing length model, offering a more general and practical approach to modeling complex turbulence and flows.
+CFD simulations run on different models, the model that i am choosing is the K-epsilon model, it is a very popular model used in a lot of amateur and beginner simulations, which don't require a niche model.
 
-The model uses two primary equations:
-\begin{enumerate}
-    \item Turbulent kinetic energy equation
-    \item Dissipation rate equation
-\end{enumerate}
+The k-episode model was developed by Launder and Spalding in 1974 to improve on older models like the mixing length model. It offers a more general and practical approach to modeling complex turbulence and flows. It majorly uses two equations, one for turbulent kinetic energy and one for dissipation rates.
 
-Common applications include:
-\begin{itemize}
-    \item Airflow simulation in HVAC systems
-    \item Combustion analysis in engines
-    \item Drag and lift analysis on vehicles
-    \item Pollutant transport modeling through air and water
-    \item Flow studies in pipes, channels, and around structures
-\end{itemize}
+This model is often used in simulating airflows in HVAC systems and combustion in engines, analysing drag and lift on vehicles, Modeling the travel of particles like pollutant through water and the atmosphere and studying flow in pipes, channels and bridges
 
-The model predicts mean flow characteristics by solving these two equations, assuming isotropic turbulence (equal turbulent viscosity in all directions), making it suitable for many engineering applications. However, it struggles with complex geometries involving strong flow separation and swirl.
+The model predicts the mean flow characteristics of flows, by solving the two equations, it is assuming isotropic turbulence, which means the turbulent viscosity is equal across every direction, this makes it very suitable for many engineering applications. Though It does struggle with the investigated complex geometries.
+
+why is the model good?
+
+Because the model only uses two equations to calculate the simulation its simplisity matches its power. It is great for a wide range of reynolds number of flows, so it is perfect for simulating turbulence. The model shows to converge correctly, in simulation converging is referred to when multible sennerios and calculations give the same answer which means the answer is likely to be very precise. And as the model has been used since 1974 it has had decates of testing impovements and validation
+
+There are better models out ther now as the k-omega sst, which can handle bigger pressure drops accros the simulation, but that model is even more power hungry and expensive to run. The k-epsilon model is not very good at calculating swirls and flows including strong separation in the fluid.
+
+Why is Asyns good?
+
+I am using a student version of the ansys software which is running all the simulations, asyns is such a good choice, because it has incredible horizon of simulation choices, it offers more then just fluid dynamics, but it can also simulate things like heat transfer and electromagnetic fields. This makes it very appealing for engineers. 
+
+Over 17.000 companies use asyns, including racign and rocket teams liek nasa and redbull racing.
+
+Mesh density?
+
+This investigation is investigating the affect of mesh density on time, now why does mesh density actually matter?
 
 \begin{figure}[H]
     \centering
@@ -133,17 +130,13 @@ The model predicts mean flow characteristics by solving these two equations, ass
     \label{fig:mesh_example}
 \end{figure}
 
-\subsubsection{Mesh Density}
+above is a image of the mesh of one of the complex objects simulated in the experiment. Mesh density can metaphorically be refferet to as resolution, imagine every one of the triangles above is a pixel on your screen, the more triangles your have per area like in the middle right of the image the better the resolution. A simulation calculates the physical behavior of every triangle. In real life we have incredibly small particles which all follow the laws of physics, and the closer we get to the size of the particle the more accurate does our simulation follow real life, but that also means more calculations need to be doen, and possible more time will be allocated to the simulation.
 
-Mesh density can be metaphorically referred to as resolution. Each triangle in Figure \ref{fig:mesh_example} represents a computational cell, similar to pixels on a screen. Higher triangle density per area (like in the center-right of the image) provides better resolution. The simulation calculates physical behavior for every triangular element.
+Calculations are only done inside the grey area, i have made sure that there is enough volume for the simulation to take into account everything which is relevant. which means the simulation is ignoring everything else, which could happen outside of the blocks volume-. This volume is constant throughout the experiment though.
 
-In reality, we have incredibly small particles following physics laws. The closer our mesh approaches particle size, the more accurately our simulation follows real-life behavior, but this requires more calculations and potentially more time.
+Why does the amount of itterations matter?
 
-Calculations are performed only within the defined volume (gray area in the figure), ensuring sufficient space to account for all relevant phenomena while ignoring external effects. This volume remains constant throughout the experiment.
-
-\subsubsection{Iterations}
-
-In simulations, iterations refer to computational cycles testing different temperatures, velocities, and pressures at various locations. Like in statistics, larger sample sizes reduce random error and decrease standard deviation of findings.
+In simulation iterations refers to the amount of scenarios,The scenarios refer to testing different temperatures, velocities and pressure in different places. for which all calculations are done. Like in statistics the bigger the sample size the smaller the random error. And the standart diviation of all findings will get smaller aswell. 
 
 \begin{figure}[H]
     \centering
@@ -152,92 +145,83 @@ In simulations, iterations refer to computational cycles testing different tempe
     \label{fig:convergence}
 \end{figure}
 
-Figure \ref{fig:convergence} displays simulated drag results against iteration number. After approximately 20 iterations, the drag values stabilize, indicating convergence. However, without testing all scenarios, one cannot know if values will change, creating incentive for nearly infinite iterations. This is problematic because each iteration requires complete physics calculations, meaning more iterations demand more time.
+In the graph above, i have displayed the simulated drag results y against the amound of iterations x, visible is that after 20 itterations the simulated drag is not really changing this is reffered to as converging. But before testing all scenarios one will never knwo if the values change, so there is a incentive to have almost infinite amount of itterations. Having infinite amount of itterations is bad though, because for every itteration a complete calculation of all physics behaviours needs to be done. so more itterations mean more time.
 
-\subsubsection{Residuals}
+Residuals?
 
-Residuals govern simulation duration until convergence by reflecting imbalance in conservation laws (mass, energy, etc.) within the Navier-Stokes equations. Low residuals indicate precise measurements while high residuals suggest low precision.
+One of the constant of this investigation are residuals, residuals govern how far the simulation will run intill the values converge. they do this by reflecting the imbalance in the conservation laws, mass enegy…, in the navier stokes equations, low residulas means more pressice measurements and high residuals mean low precition. The residuals therefore basically define too how many significant figures the calculation are hold truthfully, in the experiment i have defined all residuals to 5 digit accuracy, which in return means 5 significant figures for my result, i have chosen 5 digits and not 6 digits or lower, because when running tests at 6 digit accuracy, the test did not converge even after 1000 itteration and as seen in the graph above for the iterations this means the simulations could have taken even longer and return no relativly more valueble insights. 
 
-For this experiment, all residuals are set to 5-digit accuracy, providing 5 significant figures for results. This choice was made because 6-digit accuracy tests failed to converge even after 1000 iterations, potentially requiring excessive time without providing relatively more valuable insights.
+All simulations in this experiment are run to either all residuals converge, which means the number calculated is the number the computer thinks is most accurate, or to 1000 itteration, because that can indicate that there is a error with the geometry or the mesh of the simulation and the simulations is likely faulted, or and can not get more accurate.
 
-All simulations run until either:
-\begin{enumerate}
-    \item All residuals converge (indicating the computer's most accurate calculation)
-    \item 1000 iterations (suggesting potential geometry or mesh errors)
-\end{enumerate}
+Is my experiment accurate?
+The goal of my experiment is to find out how much we acctualy need to simulate things untill they become accurate enough. In real life we often dont simulate cubes and other simpler shapes but these are still more complex shapes than the sphere we assume in ib, but all bodies and shapes in some way or the other will kind of reflect or can be build up from the chapes that i am simulating, for example a plane can be simplified to one longe cylinder with a half sphere at the front and wide water droplets as wings. Now firms like nasa which relly on some base of simulations for there space flight programm have acces to computationally way stronger hardware compared to me, so the acctual time they are invest is far lower then mine, but the waisted time from letting simulations run for to long, relative to mine is still the same.
 
-\subsection{Research Question and Objectives}
+\subsection{Aims and Objectives}
 
-\textbf{Research Question:} In the k-epsilon computational model in ANSYS, how does the time invested in calculation-heavy mesh and iteration processes affect the accuracy of prediction of turbulent flow characteristics for complex geometries?
+In the k-epsilon computational model in ansys how does the time invested into calculation heavy mesh and iteration affect the accuracy of prediction of turbulent flow characteristic fpr complex geometries?
 
-This experiment compares different simulation setups (varying mesh densities and iteration amounts) against experimental values of fluid drag widely considered accurate. The goal is to evaluate how accurate simulations can or should become relative to wind tunnel values.
+In this experiment i will try and compare diffrent simulation set ups, so diffrent mesh densities and amounts of itterations, against experimental values of fluid drag widely considered true. Through this i try to evalute how accurate simulations can get or should get in reference to the values obtained in the wing tunnel.
 
-The investigation measures wasted time from simulating without accuracy benefits, as computers consume power in watts. Longer simulations consume more power, and if time is wasted without accuracy improvements, power is also wasted, contradicting current sustainability goals.
+Now it might seem like i have two depend variables and two independent, but actually i am measuring the wasted time from simulating to no accuracy benefit created by the variables instead, i need both of them to understand what is actually waisting the time. I am measuring the time waisted, because our computers are consuming powers in watt, which means the longer the simulation takes the more power is consumed, assuming the time is wasted because the simulation is not getting more accurate as i stated this would mean the power is wasted aswell and in our day and age wasting power goes against allot of humanities goals. This ofcourse requires the assumption that all computtions did require the same power.
 
 \section{Literature Review}
 
-\subsection{Physics of Fluid Flow}
+\subsection{The Physics of Fluid Flow}
 
-The IB assumes fully laminar flow, which may not yield satisfactory results for engineering applications. Laminar flow occurs only in very viscous fluids or very streamlined bodies. For fluid drag calculations, this means only skin friction drag is considered.
+Now in ib we assume fully laminar flow, for engeering this assumption might not result in pleasing result. Because laminar flow only happens in very viscous fluids or in very stream line bodies. In refrence to fluid drag this means only drag in the form of skin friction will get calculated.
 
-Turbulent flow creates chaotic and swirling eddies, which is often reality for engineers. It occurs at high velocities, with complex geometries, or when fluid viscosity is low (like air). Turbulence introduces new drag types like pressure drag, created when eddies cause flow separation alongside objects. Turbulent calculations must consider object streamlines (characterized by drag coefficient $C_d$), which the IB formula completely ignores, considering only drag on the front face.
+Turbulent flow means the the fluid creates chaotic and swirling eddies, for egneniers turbulent flow is often very real. It applies at high velocities or when the geometry are more complex and the viscosity of fluids is low liek air. In reference to fluid drag turbulence introduces new kinds of drag like pressure drag, this drag is created when the eddies create flow separation allongsaide the object, so turbulent calculations need to consider the stream lines of objects, referred to as cd, the ib formula does not consider this at all and only considers drag created directly on the front face of the objects. 
 
-However, turbulent flow doesn't necessarily increase drag. Golf balls, for example, use their unstreamlined shape to benefit from turbulent flow, actually reducing total drag.
+Turbulant flow does not definitely mean that the drag is higher thoug, golf balls for example use there very unsteamline shape to benefit from the turbulent flow in a way that the actual drag is reduced.
 
-\subsection{Computational Fluid Dynamics Theory}
+\subsection{Computational Fluid Dynamics (CFD)}
 
-The k-epsilon model uses two equations to calculate particle physical behavior.
-
-The Navier-Stokes equations are:
+As i said before the k epsilon model uses two equations to calculate the physical behaviour of particles.
+the navier stokes equation: 
 \begin{align}
-\text{Continuity: } &\nabla \cdot \vec{u} = 0\\
-\text{Momentum: } &\rho\left(\frac{\partial\vec{u}}{\partial t} + \vec{u} \cdot \nabla\vec{u}\right) = -\nabla p + \mu\nabla^2\vec{u} + \vec{f}
+\text{Continuity: } \nabla \cdot \vec{u} &= 0\\
+\text{Momentum: } \rho\left(\frac{\partial \vec{u}}{\partial t} + \vec{u} \cdot \nabla \vec{u}\right) &= -\nabla p + \mu \nabla^2 \vec{u} + \vec{f}
 \end{align}
 
-These equations are what physicists use for such calculations. The IB fluid drag formula uses a simplification of these equations. Because the equations are nonlinear and interdependent, calculating specific behavior is very difficult, especially with turbulent flow. For the same reason, the k-epsilon model also uses simplified versions.
+Is what physicist would use to do such calculations, and in ib our fluid drag formula uses a simplification of this formula, because the equations are nonlinear and interdependent it is very difficult to calculate specific behaviour especially when turbulent flow is introduced, for the same reason the k-epsilon model actually also uses a simplicication of this equation aswell.
 
-Instead, the model uses Reynolds-averaged Navier-Stokes equations:
+Instead the model uses the reynolds average stokes equations,
 \begin{equation}
-\rho\left(\frac{\partial\bar{u}_i}{\partial t} + \bar{u}_j\frac{\partial\bar{u}_i}{\partial x_j}\right) = -\frac{\partial\bar{p}}{\partial x_i} + \mu\frac{\partial^2\bar{u}_i}{\partial x_j^2} - \frac{\partial}{\partial x_j}\rho\overline{u_i'u_j'}
+\rho\left(\frac{\partial \overline{u_i}}{\partial t} + \overline{u_j}\frac{\partial \overline{u_i}}{\partial x_j}\right) = -\frac{\partial \overline{p}}{\partial x_i} + \mu\frac{\partial^2 \overline{u_i}}{\partial x_j^2} - \frac{\partial \rho\overline{u_i' u_j'}}{\partial x_j}
 \end{equation}
 
-This equation introduces turbulence and averages the Stokes equations, enabling particle behavior calculations. Interestingly, this equation considers both mean and fluctuating variables simultaneously, meaning surrounding triangles in the mesh affect individual triangles, much like how particles affect each other.
+This equation introduces turbulence and averages the stokes equations making it possible to calculate the behavoir of particles, interesting is that this equation is viewing mean and fluctuating variables at the same time, this means that from the mesh picture the surrounding triangles also affect the individuel triangle, very muhc like how all particle affect each other.
 
 \section{Methodology}
 
 \subsection{Experimental Approach}
 
-Values obtained through simulation are compared against an extensively researched database of experimental results.
+The value i am finding through the simulation, will be compared to a highly extensive researched database.
 
 \subsection{Computational Simulation}
 
-Using ANSYS simulation software, drag forces on objects are simulated while varying two parameters to assess their impact on simulation accuracy and duration: mesh density and iteration count. These variables are predicted to have the greatest impact on simulation completion time.
+Using Ansys, a computer simulation software, the drag forces experienced by the objects will be simulated. i will be changin two variables to see the affect on the accuracy of the simulation outcome and how long the simulation needs to finish, Mesh density and the amount of iterations, because i predicted them to have the biggest impact on the time taken for the simulations to finish. I will use this formula $F_d = \frac{c_d \rho u^2 A}{2}$ to compare my simulated drags forces, to forces i calculated using the Cd aquired experimentaly. 
 
-The formula $F_d = \frac{C_d\rho u^2 A}{2}$ is used to compare simulated drag forces with forces calculated using experimentally acquired $C_d$ values.
+To be sure that all other variables are sensible i have set them as follows. The air speed at which the drag will be simulated will be 100ms$^{-1}$, this is because drag will increase significantly at close to mock numbers due to the increased pressure of the schock cone, but the drag at low velocity is very small and sometimes insignificant, exactly what value is chosen is not important, as long it is constant in the comparison calculations. 
 
-\subsubsection{Simulation Parameters}
+I have set the air density used in the simulation to 1.225 kgm$^{-3}$ which is the standart setting in Ansys, but is also standart air pressure, this variable could also be changed, it just needs to be constant in the comparison though.
 
-To ensure consistent variables:
-\begin{itemize}
-    \item Air speed: \SI{100}{\meter\per\second} (chosen to avoid compressibility effects near Mach numbers while ensuring significant drag forces)
-    \item Air density: \SI{1.225}{\kilogram\per\meter\cubed} (standard ANSYS setting at standard atmospheric pressure)
-    \item Frontal area: \SI{1}{\meter\squared} (for all geometries, facilitating future predictions for larger geometries)
-\end{itemize}
+ I have set the area of the geometries facing the air stream to be equal to 1m$^2$; although also this value is arbitrary, i think using 1m$^2$ will be helpful in the future, when making predictions on geometries which are bigger, because than the ratio is just the bigger size divider by one. 
 
-\subsubsection{Mesh Configuration}
+I will be testing different mesh densities, which i calculate by the number of mesh elements divided by the volume of the perimeter in which the simulation is taking place, as that volume is also constant across all simulations i will refer to the mesh only by the amount of elements.
 
-Different mesh densities are tested by varying element sizes near objects rather than total element count. This approach is standard practice since significant physics behavior is expected primarily near the geometry of interest.
+I am not changing the total amounts of mesh directly, instead i am changing the size of the elements close to the object. This is common use and is useful, because i would not expect allot of physics behaviour far away from the geometrie for which i want to calculate the drag, 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{image1.png}
-    \caption{Flow visualization showing primarily uniform flow (red) away from the cube, indicating minimal physics behavior in distant regions}
+    \caption{Flow visualization showing physics behavior primarily near the cube geometry}
     \label{fig:flow_viz}
 \end{figure}
 
-Figure \ref{fig:flow_viz} shows mostly uniform flow (red) far from the cube, confirming minimal physics behavior in distant regions. The densest mesh is labeled 5, the least dense as 1. Mesh 5 is expected to take longest with most accurate results, though not significantly more accurate than meshes 3 or 4.
+As seen above the flow is mostly just red further away from the cube, this indicated that there is no physics behaviour happing there. i have labelled the msot dense mesh 5 and the least dense mesh 1, from my hypothesis i would expect the 5 one to take the longest and have the most accurate results, although not significantly more accurate then say 3 or 4. 
 
-General simulation volume: \SI{1}{\meter\cubed}, meaning calculations assume one particle size of \SI{1}{\meter\squared} with mean physics behavior calculated for that area. The most accurate mesh elements are \SI{0.05}{\meter\cubed} directly adjacent to geometries, significantly smaller than both general mesh size and geometry, providing accurate calculation results.
+The general mesh size of the simulation parameters is 1 m$^3$, this means that calculations are done for that 1 m$^3$ and the simulation assumes one particle has the size of 1 m$^2$ and it will calculate a mean physics behaviour for that whole area. I have set the most accurate mesh elements to be 0.05m$^3$ big directly next to the geometries, this is significantly smaller than both the general mesh size and the geometrie, so it should give accrued calculation results. Because if we go back to the screen analagie, it is only possible to show a elephant for example if the pixels are smaller than the elephant which i am trying to display, in this case the mesh element size is smaller then the geometry so it should be possible to simulate it.
 
 \begin{table}[H]
 \centering
@@ -248,34 +232,51 @@ General simulation volume: \SI{1}{\meter\cubed}, meaning calculations assume one
 \rowcolor{red!50}
 \textbf{Mesh} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\
 \hline
-\rowcolor{red!50}
-Element size (m) & 0.25 & 0.2 & 0.15 & 0.1 & 0.05 \\
+element size /m & 0.25 & 0.2 & 0.15 & 0.1 & 0.05 \\
 \hline
-\rowcolor{red!50}
-Number of elements & 52,168 & 68,605 & 97,258 & 153,590 & 341,044 \\
+number of elements & 52168 & 68605 & 97258 & 153590 & 341044 \\
 \hline
 \end{tabular}
 \end{table}
 
-For each mesh size, simulations are run again, recording total iterations before convergence (maximum 1000 iterations if no convergence). Drag force readings are taken at every 1/5 of total iterations to understand accuracy changes throughout the experiment.
+In the last row i have writin the total amount of elements, this number is not significant, i can not change it directly i can only impact the element size, the number of elements is only what i can measure, i will get back to size, but because the element sizes are used equally across all geometries to get a more accurate comparison i wiil use the amount of elements which arent equal across all geometries later for comparison. This is because some geometries might take less time to simulate and be less accurate eventhough they have same mesh size, because they are smaller by themselves, remember i have to scale all objects to have a frontal area of one, but some objects are longer than others. For every mesh size i will run the simulation again, i will then write down the total number of iterations the simulations hade to do before converging, if the simulation never converged i have capped the maximum number of iterations at 1000, then i will take readings of the drag force at every 1/5 amount of all iterations, this should give me some kind of understanding, how the accuracy is changing over the run of the experiment.
 
+\begin{table}[H]
+\centering
+\caption{Example of iteration documentation, for the mesh3 of the cube}
+\label{tab:iteration_example}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{red!50}
+\textbf{total Iterations} & \textbf{218} &  &  \\
+\hline
+\textbf{1/5 of total Iterations} & \textbf{2/5 of total Iterations} & \textbf{3/5 of total Iterations} & \textbf{4/5 of total Iterations} \\
+\hline
+44 & 87 & 131 & 174 \\
+\hline
+\end{tabular}
+\end{table}
 \section{Results and Discussion}
 
 \subsection{Experimental Results}
 
-Figure \ref{fig:convergence} shows typical simulation monitoring display. Generally, values don't change significantly during simulation runs, though not all geometries showed such clean convergence behavior.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image8.png}
+    \caption{Simulation monitoring display during runtime}
+    \label{fig:simulation_display}
+\end{figure}
 
-\subsubsection{Cube Results}
+This is what i can view when the simulation is running, already from this one can see that nothing really changes allot in the run of the simulation. Not every graph looked as clean as this one for the cube.
 
 \begin{table}[H]
 \centering
-\caption{Complete data collected for cube simulation}
+\caption{Full data collected for the cube simulation}
 \label{tab:cube_results}
-\resizebox{\textwidth}{!}{%
+\adjustbox{width=\textwidth}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\rowcolor{lightblue}
-\textbf{Iteration} & \textbf{Expected (N)} & \textbf{Mesh 1 (N)} & \textbf{\% error} & \textbf{Mesh 2 (N)} & \textbf{\% error} & \textbf{Mesh 3 (N)} & \textbf{\% error} & \textbf{Mesh 4 (N)} & \textbf{\% error} & \textbf{Mesh 5 (N)} & \textbf{\% error} \\
+\textbf{Iteration} & \textbf{Expected /N} & \textbf{Mesh 1 /N} & \textbf{\% error} & \textbf{Mesh 2 /N} & \textbf{\% error} & \textbf{Mesh 3 /N} & \textbf{\% error} & \textbf{Mesh 4 /N} & \textbf{\% error} & \textbf{Mesh 5 /N} & \textbf{\% error} \\
 \hline
 1/5 of total & 6.43E+03 & 5.72E+03 & 11.01\% & 5.98E+03 & 6.96\% & 6.07E+03 & 5.67\% & 6.23E+03 & 3.19\% & 6.04E+03 & 6.04\% \\
 \hline
@@ -291,25 +292,71 @@ Figure \ref{fig:convergence} shows typical simulation monitoring display. Genera
 }
 \end{table}
 
-The cube simulation results show incredible accuracy after completion with highest mesh density: 99.94\%. This was unexpected since the software calculates purely from physics understanding rather than interpreting forces from a database. Even at 4/5 of total simulation time, accuracy was at least 99.93\%, suggesting simulations needn't run to completion. This error is well beyond significant figures in the database. Even 2\% error from less dense meshes is accurate enough for predictions instead of wind tunnel testing.
+This is the table of measurements which i have found for the cube, written down in under the meshes headings is the simulated drag force experienced by the cube, they are to 5 significant figures, but the data base only has 3 significant figures therefore i will only visually compare only the first 3, but use the unroundet numbers for the \% error.
 
-The computer appears to struggle initially with complex meshes, as denser meshes show greater differences between start and end values compared to less dense meshes.
+now we can see that the simulation has found an incredible accurate force after the simulations finished so after all iterations, and with the highest mesh density, of 99.94\% i was not expecting this, remember the software is not interpreting forces from a databank, but it is calculating it purely from its understanding of the laws of physiks, also to be seen is that atleast until ⅗ of the total simulation the accuracy was already atleast 99.93\% so one might say that the simulation did not need to be completed that long, this error is far beyond anywhere close to the significant figures in my database. Even the 2 \% error from the less dense mesh is accurate enough to make predictions instead of using a air tunnel. 
+
+What i have found though is that the computer seems to find it more difficult to start calculating complex meshes, i come to this conclusion, because in the more dense meshes the start of the simulation gives far different values than the end does, this difference decrease in less dense meshes, but this is also because measurements for those meshes where taken at iterations, whichs absolut number of iterations was smaller.
+
+Now there are multiple ways to graph these results an i will explain why i choose to graph them in the way i did, 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Mesh size} & \textbf{\% error} \\
+\hline
+0.25 & 11.00\% \\
+\hline
+0.20 & 7.13\% \\
+\hline
+0.15 & 5.38\% \\
+\hline
+0.10 & 2.26\% \\
+\hline
+0.05 & 1.44\% \\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image22.png}
-    \caption{Average percentage error against mesh element size for cube}
-    \label{fig:cube_mesh_error}
+\centering
+\includegraphics[width=0.8\textwidth]{image22.png}
+\caption{Average \%error against element size of the mesh for the cube}
+\label{fig:cube_mesh_error}
 \end{figure}
+
+This graph agin is for the cube and it is from the table above, i have taken the average \% error found at every mesh size and compared it too the mesh size.
+
+I find this graph very useful for one specific object, but hardly useful for future comparisons or predictions, eventhough it shows the clear trend to more accurate measurements if the mesh density increases. Instead i have chosen to use this graph
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Amount of mesh elements} & \textbf{\% error} \\
+\hline
+52168 & 11.00\% \\
+\hline
+68605 & 7.13\% \\
+\hline
+97258 & 5.38\% \\
+\hline
+153590 & 2.26\% \\
+\hline
+341044 & 1.44\% \\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image14.png}
-    \caption{Average percentage error against number of mesh elements for cube}
-    \label{fig:cube_elements_error}
+\centering
+\includegraphics[width=0.8\textwidth]{image14.png}
+\caption{Average \%error against amount of mesh elements for the cube}
+\label{fig:cube_elements_error}
 \end{figure}
 
-Figure \ref{fig:cube_elements_error} is more useful for comparisons as it shows actual element counts, which vary across different geometries.
+I find this graph more useful, but because it shows the actual amount of elements, and as i said before these do varie across the different geometries, it will ease comparisons.
 
 \begin{figure}[H]
     \centering
@@ -461,38 +508,35 @@ Average time per iteration was recorded because reading total time would be extr
     \label{fig:time_vs_error}
 \end{figure}
 
-Figure \ref{fig:time_vs_error} clearly shows simulations continue for very long periods with minimal accuracy gains. The accuracy function asymptotes around 11\%, and especially after the 3-hour mark, little accuracy is gained while considerable energy is wasted.
-
-Considering experimental values were only to 3 significant figures, changes less than 0.02\% are deemed not worth the time as they're insignificant to 3 significant figures. Instead of investing over 10,000 seconds average per simulation, only 4,592 seconds would arguably provide sufficient results, more than halving time and saving substantial energy. Further reducing accuracy requirements by 0.01\% for both variables suggests only 264 iterations average should be required.
+When looking at the final results it is very clear that the simulations go on for a very long time, even if not allot of accuracy is gained, the function of increasing accuracy is assemptoting somewhere to 11 \%, and especially after the 3 hour mark not allot of accuracy is gained and allot of valuable energy is waisted. So considering that my experimental values where only to 3 significant figures i have stated that a change in less than 0.02\% is not worth the time as it is insignificant to 3 significant figures, as a result instead of investing more than 10000 seconds on average for a simulaton only 4592 seconds would arguable give good enough results, this would more than half the time and save so much energy, if i go back reducing the accuracy for both variables by 0.01\% this means only 264 iterations on average is how long a simulation should run.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image11.png}
-    \caption{Average total iterations versus average percentage error}
-    \label{fig:iterations_vs_error}
+\centering
+\includegraphics[width=0.8\textwidth]{image11.png}
+\caption{Average amount of total iterations against average \% error}
+\label{fig:iterations_final}
 \end{figure}
+
+whilst i found that 30234 mesh elements are sufficient for a volume of 1936m3.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image2.png}
-    \caption{Average mesh elements versus average percentage error}
-    \label{fig:mesh_vs_error}
+\centering
+\includegraphics[width=0.8\textwidth]{image2.png}
+\caption{Average amount of mesh elements against average \% error}
+\label{fig:mesh_final}
 \end{figure}
-
-The analysis found that 30,234 mesh elements are sufficient for a volume of \SI{1936}{\meter\cubed}.
 
 \subsection{Comparison with IB Fluid Drag Formula}
 
-To assess both assumptions in the IB model's impact on simulations, a cube was simulated using a laminar flow model.
+To see if both parts of the assumption we have in ib have a impact on the simulations i have simulated a cube using a laminar flow model, in this case i am only exploring complex objects. 
 
 \begin{table}[H]
 \centering
-\caption{Cube simulation data assuming laminar flow}
-\label{tab:laminar_comparison}
+\caption{Further studies data for a cube assuming laminar flow}
+\label{tab:laminar_cube}
 \begin{tabular}{|c|c|c|c|}
 \hline
-\rowcolor{lightblue}
-\textbf{Iteration} & \textbf{Expected (N)} & \textbf{Simulation (N)} & \textbf{\% Error} \\
+\textbf{Iteration} & \textbf{Expected /N} & \textbf{simulation} & \textbf{\% error} \\
 \hline
 1/5 of total & 6.43E+03 & 7.30E+03 & -13.50\% \\
 \hline
@@ -507,16 +551,15 @@ To assess both assumptions in the IB model's impact on simulations, a cube was s
 \end{tabular}
 \end{table}
 
-The simulation results weren't as far off as expected. The laminar flow model performs worse than k-epsilon with significant reading variation, but the difference isn't extreme because flow wasn't highly turbulent initially. All simulations used the highest mesh density explored.
+actual the simulations results are not as far of as i thought they might be, the laminar flow model is not as good as the k.epsilon and the readings were variating alot, nevertheless i think the difference is not to far off, because the flow was nto as turbulent to start off with. All simulations were done at the highest mesh density explored.
 
 \begin{table}[H]
 \centering
-\caption{Sphere simulation data with IB formula comparison}
-\label{tab:ib_comparison}
+\caption{Further studies data for a sphere assuming nothing}
+\label{tab:sphere_ib}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\rowcolor{lightblue}
-\textbf{Iteration} & \textbf{Expected (N)} & \textbf{IB Expected (N)} & \textbf{Simulation (N)} & \textbf{\% Error} \\
+\textbf{Iteration} & \textbf{Expected /N} & \textbf{IB Expected /N} & \textbf{simulation} & \textbf{\% error} \\
 \hline
 1/5 of total & 2.88E+03 & 1.92E-02 & 2.84E+03 & 1.43\% \\
 \hline
@@ -531,89 +574,89 @@ The simulation results weren't as far off as expected. The laminar flow model pe
 \end{tabular}
 \end{table}
 
-This comparison examines turbulent flow's influence on assumptions. For spherical objects, the IB formula should theoretically apply, and simulation results closely matched expectations. The IB formula and actual values differ greatly, partially due to turbulence, but the significant force difference is mainly because the IB formula doesn't consider that force increases with the square of velocity, and these tests were conducted at \SI{100}{\meter\per\second}.
+Here i am comparing how big the influence of turbulent flow is one the assumption, in this case i should be able to use the ib formula, aswell because the object used is a sphere, my simulation of course was not far off the expectation. I would not have to simulate it probably and i could have compared the different equations bythemself, as we can see the ib formula and the actual values are really far of, i think turbulence is one of the reasons this is happening, but i think the big difference in the forces is due to the fact that the ib formula is not considering that force increases squard to the velocity, and this is at 100 ms$^{-1}$
 
 \section{Conclusion}
 
-This investigation successfully demonstrated how computational time invested in mesh density and iterations affects turbulent flow prediction accuracy for complex geometries using the k-epsilon model in ANSYS.
+After finishing all tables this are the average iterations and the average mesh with their according average \%error across all simulations,
 
-\textbf{Key Findings:}
-\begin{itemize}
-    \item Higher mesh densities significantly improve accuracy but dramatically increase computational time
-    \item Simulations often continue well beyond necessary convergence, wasting substantial computational resources
-    \item The k-epsilon model can achieve remarkable accuracy (99.94\% for optimal conditions) purely from physics-based calculations
-    \item Diminishing returns occur after approximately 200-300 iterations for most geometries
-    \item Power consumption and time can be more than halved without significant accuracy loss
-\end{itemize}
+\begin{table}[H]
+\centering
+\caption{All average \% iteration against all \% error and all average mesh elements against average \% error}
+\label{tab:final_summary}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Average amount of iteration} & \textbf{\% error} &  & \textbf{Amount of mesh elements} & \textbf{\%error} & \textbf{time/ iteration} \\
+\hline
+77 & 14.29\% &  & 114.025 & 14.40\% & 14 \\
+\hline
+154 & 11.42\% &  & 119.628 & 13.08\% & 14.5 \\
+\hline
+231 & 11.26\% &  & 133.739 & 13.51\% & 14 \\
+\hline
+308 & 11.24\% &  & 171.610 & 10.86\% & 15 \\
+\hline
+385 & 11.24\% &  & 308.837 & 7.61\% & 28.5 \\
+\hline
+\end{tabular}
+\end{table}
 
-\textbf{Practical Recommendations:}
-\begin{itemize}
-    \item For engineering applications requiring 3 significant figure accuracy, 30,234 mesh elements in \SI{1936}{\meter\cubed} volume provide sufficient resolution
-    \item Limiting simulations to 264 iterations on average offers optimal time-accuracy balance
+Throughout the recording of the results i also recorder the average time it took to take to simulate one iteration, i used averages, because reading the total time would have been extremely hard. I compared them to mesh density 
+Just adding the time per iteration on the right. This shows a correlation, where higher mesh density means longer time to simulate.
+And because it is time per iteration, this means that time per iteration is directly related, even though i have to say that generally the last few iterations take less time and not every iterations takes the same amount of time, that is why i used averages and i went to no decimal place in my recordings, because variation in the milliseconds could be random and noisy.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{image6.png}
+\caption{Across all geometries, time against average\% error}
+\label{fig:time_vs_error}
+\end{figure}
+
+I have realized when analysing my findings that two of the investigated objects show outliers, where the simulated number gets more accurate with less iterations or with decreasing mesh density, i think i can rightfully say that they are outliers, because the simulation will carry on until the simulation thinks it has reached the most accurate result, this is the base idea of the residuals. And when the less dense mesh created more accurate results this was also a outlier as this was most probably caused, because the geometry was very complex to model for me and there were not allot of boundaries given. I have excluded these from my final results as a result.
     \item K-epsilon turbulence modeling provides substantially better accuracy than laminar assumptions for complex geometries
     \item Computational resources can be optimized without sacrificing engineering-relevant accuracy
 \end{itemize}
 
 This research provides valuable insights for engineers and researchers seeking to optimize CFD simulation parameters, ultimately contributing to more sustainable computational practices in fluid dynamics analysis.
 
-\section{Improvements and Future Work}
+\section{Improvements}
 
-Attempts were made to apply findings to real-world cases, specifically simulating drag on a Tesla Model S Plaid (known for its low drag coefficient). Unfortunately, the computer couldn't handle the complexity required for automotive geometry, preventing validation of results for practical engineering applications. Future work should test these findings with more powerful computational resources.
+I have tried to apply my findings on real world use cases, i tried to simulate the drag experienced by a tesla modes s plaid as it had a publicly known very low drag coefficient. Unfortunately my computer could not handle the complexity that a car has so i could not find if my results can be used in the real world, next time i would want to try out if it works for engineers aswell. 
 
-Some geometries with experimental comparison data were poorly described (long cylinder, streamline body). Future research should obtain independent experimental data ensuring identical boundary conditions between simulation and experiment.
-
-Additional recommendations for future work:
-\begin{itemize}
-    \item Investigate other turbulence models (k-omega SST) for comparison
-    \item Extend analysis to different Reynolds numbers
-    \item Apply findings to industrial-scale computational resources
-    \item Develop automated optimization algorithms for mesh/iteration selection
-\end{itemize}
+Unfortunately some of the geometries which i had experimental data to test against were described very badly like a long cylinder and streamline body, next time i would try and get my own experimental data to be sure that both have the same boundary conditions.
 
 \section{References}
 
-\begin{enumerate}
-    \item Launder, B.E., and Spalding, D.B. (1974). The numerical computation of turbulent flows. \textit{Computer Methods in Applied Mechanics and Engineering}, 3(2), 269-289.
-    
-    \item ANSYS Inc. (2021). \textit{ANSYS Fluent Theory Guide}. ANSYS, Inc.
-    
-    \item Wilcox, D.C. (2006). \textit{Turbulence Modeling for CFD}. DCW Industries.
-    
-    \item Versteeg, H.K., and Malalasekera, W. (2007). \textit{An Introduction to Computational Fluid Dynamics: The Finite Volume Method}. Pearson Education.
-    
-    \item Pope, S.B. (2000). \textit{Turbulent Flows}. Cambridge University Press.
-\end{enumerate}
+- Citing academic papers, CFD textbooks, and engineering articles.
 
-\newpage
-\appendix
-\section{Additional Simulation Images}
+Assets:
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{image3.png}
-    \caption{Additional simulation visualization showing flow patterns}
-    \label{fig:sim1}
+\centering
+\includegraphics[width=0.8\textwidth]{image3.png}
+\caption{Additional simulation visualization 1}
+\label{fig:asset1}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{image10.png}
-    \caption{Mesh generation and boundary condition setup}
-    \label{fig:sim2}
+\centering
+\includegraphics[width=0.8\textwidth]{image10.png}
+\caption{Additional simulation visualization 2}
+\label{fig:asset2}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{image16.png}
-    \caption{Convergence monitoring during simulation}
-    \label{fig:sim3}
+\centering
+\includegraphics[width=0.8\textwidth]{image16.png}
+\caption{Additional simulation visualization 3}
+\label{fig:asset3}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{image13.png}
-    \caption{Post-processing results visualization}
-    \label{fig:sim4}
+\centering
+\includegraphics[width=0.8\textwidth]{image13.png}
+\caption{Extra pictures depicting that i actually did the simulations}
+\label{fig:asset4}
 \end{figure}
 
 \end{document}
