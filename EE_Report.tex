@@ -38,8 +38,8 @@
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
 % Table setup
-\renewcommand{\arraystretch}{1.2}
-\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{4pt}
 
 % Custom colors for tables (matching original)
 \definecolor{lightblue}{RGB}{207,226,243}
@@ -87,17 +87,19 @@ Impact of Mesh Density and Iterations on Turbulent Flow Prediction Accuracy for 
 
 \subsection{Background}
 
-Ib fluid drag formula:
+\subsubsection{IB Fluid Drag Formula}
 
 The IB supplies a simplified equation and theory behind fluid drags on objects, F rv d = 6πηr, which assumes all objects are round, and flow is laminar, this creates allot of limitations that the simulations should eliminate
 
-CFD: 
+\subsubsection{Computational Fluid Dynamics (CFD)}
 
 Computational fluid dynamics simulations are computer simulations of fluid flow. They are used to analyse and solve problems in fluid flow, heat transfer and similar activities. They rely on heavy software and computational power to simulate difficult situations which are hard to simulate experimentally. 
 
 It involves a lot of physics equations, especially the Navier stokes and the Reynolds equations, to calculate pressure velocity, temperature, and density of a fluid over time in different situations, from which drag can also be calculated. It is very important in various industries: Aerodynamics (e.g., aircraft design, drag reduction), Automotive engineering (e.g., optimizing car shapes for fuel efficiency), Energy (e.g., modeling wind turbines, heat exchangers), Medicine (e.g., studying blood flow in arteries).
 
-K-epsilon:
+\subsubsection{K-Epsilon Model}
+
+CFD simulations run on different models, the model that i am choosing is the K-epsilon model, it is a very popular model used in a lot of amateur and beginner simulations, which don't require a niche model.
 
 CFD simulations run on different models, the model that i am choosing is the K-epsilon model, it is a very popular model used in a lot of amateur and beginner simulations, which don't require a niche model.
 
@@ -107,19 +109,19 @@ This model is often used in simulating airflows in HVAC systems and combustion i
 
 The model predicts the mean flow characteristics of flows, by solving the two equations, it is assuming isotropic turbulence, which means the turbulent viscosity is equal across every direction, this makes it very suitable for many engineering applications. Though It does struggle with the investigated complex geometries.
 
-why is the model good?
+\subsubsection{Why is the K-Epsilon Model Good?}
 
 Because the model only uses two equations to calculate the simulation its simplisity matches its power. It is great for a wide range of reynolds number of flows, so it is perfect for simulating turbulence. The model shows to converge correctly, in simulation converging is referred to when multible sennerios and calculations give the same answer which means the answer is likely to be very precise. And as the model has been used since 1974 it has had decates of testing impovements and validation
 
 There are better models out ther now as the k-omega sst, which can handle bigger pressure drops accros the simulation, but that model is even more power hungry and expensive to run. The k-epsilon model is not very good at calculating swirls and flows including strong separation in the fluid.
 
-Why is Asyns good?
+\subsubsection{Why is ANSYS Good?}
 
 I am using a student version of the ansys software which is running all the simulations, asyns is such a good choice, because it has incredible horizon of simulation choices, it offers more then just fluid dynamics, but it can also simulate things like heat transfer and electromagnetic fields. This makes it very appealing for engineers. 
 
 Over 17.000 companies use asyns, including racign and rocket teams liek nasa and redbull racing.
 
-Mesh density?
+\subsubsection{Mesh Density}
 
 This investigation is investigating the affect of mesh density on time, now why does mesh density actually matter?
 
@@ -134,7 +136,7 @@ above is a image of the mesh of one of the complex objects simulated in the expe
 
 Calculations are only done inside the grey area, i have made sure that there is enough volume for the simulation to take into account everything which is relevant. which means the simulation is ignoring everything else, which could happen outside of the blocks volume-. This volume is constant throughout the experiment though.
 
-Why does the amount of itterations matter?
+\subsubsection{Why does the Amount of Iterations Matter?}
 
 In simulation iterations refers to the amount of scenarios,The scenarios refer to testing different temperatures, velocities and pressure in different places. for which all calculations are done. Like in statistics the bigger the sample size the smaller the random error. And the standart diviation of all findings will get smaller aswell. 
 
@@ -147,13 +149,14 @@ In simulation iterations refers to the amount of scenarios,The scenarios refer t
 
 In the graph above, i have displayed the simulated drag results y against the amound of iterations x, visible is that after 20 itterations the simulated drag is not really changing this is reffered to as converging. But before testing all scenarios one will never knwo if the values change, so there is a incentive to have almost infinite amount of itterations. Having infinite amount of itterations is bad though, because for every itteration a complete calculation of all physics behaviours needs to be done. so more itterations mean more time.
 
-Residuals?
+\subsubsection{Residuals}
 
 One of the constant of this investigation are residuals, residuals govern how far the simulation will run intill the values converge. they do this by reflecting the imbalance in the conservation laws, mass enegy…, in the navier stokes equations, low residulas means more pressice measurements and high residuals mean low precition. The residuals therefore basically define too how many significant figures the calculation are hold truthfully, in the experiment i have defined all residuals to 5 digit accuracy, which in return means 5 significant figures for my result, i have chosen 5 digits and not 6 digits or lower, because when running tests at 6 digit accuracy, the test did not converge even after 1000 itteration and as seen in the graph above for the iterations this means the simulations could have taken even longer and return no relativly more valueble insights. 
 
 All simulations in this experiment are run to either all residuals converge, which means the number calculated is the number the computer thinks is most accurate, or to 1000 itteration, because that can indicate that there is a error with the geometry or the mesh of the simulation and the simulations is likely faulted, or and can not get more accurate.
 
-Is my experiment accurate?
+\subsubsection{Is My Experiment Accurate?}
+
 The goal of my experiment is to find out how much we acctualy need to simulate things untill they become accurate enough. In real life we often dont simulate cubes and other simpler shapes but these are still more complex shapes than the sphere we assume in ib, but all bodies and shapes in some way or the other will kind of reflect or can be build up from the chapes that i am simulating, for example a plane can be simplified to one longe cylinder with a half sphere at the front and wide water droplets as wings. Now firms like nasa which relly on some base of simulations for there space flight programm have acces to computationally way stronger hardware compared to me, so the acctual time they are invest is far lower then mine, but the waisted time from letting simulations run for to long, relative to mine is still the same.
 
 \subsection{Aims and Objectives}
@@ -274,6 +277,7 @@ This is what i can view when the simulation is running, already from this one ca
 \caption{Full data collected for the cube simulation}
 \label{tab:cube_results}
 \resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -383,6 +387,7 @@ Figure \ref{fig:cube_iterations_error} shows clear correlation where increased i
 \caption{Complete data collected for cone simulation}
 \label{tab:cone_results}
 \resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -409,6 +414,7 @@ Figure \ref{fig:cube_iterations_error} shows clear correlation where increased i
 \caption{Complete data collected for half sphere simulation}
 \label{tab:half_sphere_results}
 \resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -435,6 +441,7 @@ Figure \ref{fig:cube_iterations_error} shows clear correlation where increased i
 \caption{Complete data collected for streamline body simulation}
 \label{tab:streamline_results}
 \resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -461,6 +468,7 @@ Figure \ref{fig:cube_iterations_error} shows clear correlation where increased i
 \caption{Complete data collected for long cylinder simulation}
 \label{tab:cylinder_results}
 \resizebox{\textwidth}{!}{%
+\small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -593,6 +601,7 @@ After finishing all tables this are the average iterations and the average mesh 
 \centering
 \caption{All average \% iteration against all \% error and all average mesh elements against average \% error}
 \label{tab:final_summary}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
@@ -609,6 +618,7 @@ After finishing all tables this are the average iterations and the average mesh 
 385 & 11.24\% &  & 308.837 & 7.61\% & 28.5 \\
 \hline
 \end{tabular}
+}
 \end{table}
 
 Throughout the recording of the results i also recorder the average time it took to take to simulate one iteration, i used averages, because reading the total time would have been extremely hard. I compared them to mesh density 
