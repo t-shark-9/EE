@@ -273,9 +273,10 @@ This is what i can view when the simulation is running, already from this one ca
 \centering
 \caption{Full data collected for the cube simulation}
 \label{tab:cube_results}
-\adjustbox{width=\textwidth}{
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Iteration} & \textbf{Expected /N} & \textbf{Mesh 1 /N} & \textbf{\% error} & \textbf{Mesh 2 /N} & \textbf{\% error} & \textbf{Mesh 3 /N} & \textbf{\% error} & \textbf{Mesh 4 /N} & \textbf{\% error} & \textbf{Mesh 5 /N} & \textbf{\% error} \\
 \hline
 1/5 of total & 6.43E+03 & 5.72E+03 & 11.01\% & 5.98E+03 & 6.96\% & 6.07E+03 & 5.67\% & 6.23E+03 & 3.19\% & 6.04E+03 & 6.04\% \\
@@ -302,8 +303,11 @@ Now there are multiple ways to graph these results an i will explain why i choos
 
 \begin{table}[H]
 \centering
+\caption{Mesh size versus error for cube simulation}
+\label{tab:cube_mesh_error}
 \begin{tabular}{|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Mesh size} & \textbf{\% error} \\
 \hline
 0.25 & 11.00\% \\
@@ -332,8 +336,11 @@ I find this graph very useful for one specific object, but hardly useful for fut
 
 \begin{table}[H]
 \centering
+\caption{Amount of mesh elements versus error for cube simulation}
+\label{tab:cube_elements_error}
 \begin{tabular}{|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Amount of mesh elements} & \textbf{\% error} \\
 \hline
 52168 & 11.00\% \\
@@ -536,6 +543,7 @@ To see if both parts of the assumption we have in ib have a impact on the simula
 \label{tab:laminar_cube}
 \begin{tabular}{|c|c|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Iteration} & \textbf{Expected /N} & \textbf{simulation} & \textbf{\% error} \\
 \hline
 1/5 of total & 6.43E+03 & 7.30E+03 & -13.50\% \\
@@ -559,6 +567,7 @@ actual the simulations results are not as far of as i thought they might be, the
 \label{tab:sphere_ib}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Iteration} & \textbf{Expected /N} & \textbf{IB Expected /N} & \textbf{simulation} & \textbf{\% error} \\
 \hline
 1/5 of total & 2.88E+03 & 1.92E-02 & 2.84E+03 & 1.43\% \\
@@ -586,6 +595,7 @@ After finishing all tables this are the average iterations and the average mesh 
 \label{tab:final_summary}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
+\rowcolor{lightblue}
 \textbf{Average amount of iteration} & \textbf{\% error} &  & \textbf{Amount of mesh elements} & \textbf{\%error} & \textbf{time/ iteration} \\
 \hline
 77 & 14.29\% &  & 114.025 & 14.40\% & 14 \\
