@@ -23,6 +23,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 \usepackage{colortbl}
+\usepackage[style=numeric,backend=biber,sorting=none]{biblatex}
+\addbibresource{references.bib}
 
 % Page setup
 \onehalfspacing
@@ -97,39 +99,39 @@ Now it might seem like I have two depend variables and two independent, but actu
 
 \subsubsection{IB Fluid Drag Formula}
 
-TheIBsupplies a simplified equation and theory behind fluid drags on objects, $F_{drag} = 6\pi\eta rv$, which assumes all objects are round, and flow is laminar, this creates allot of limitations which simulations eliminate.
+TheIBsupplies a simplified equation and theory behind fluid drags on objects, $F_{drag} = 6\pi\eta rv$, which assumes all objects are round, and flow is laminar, this creates allot of limitations which simulations eliminate \cite{tsokos2014physics}.
 
 \subsubsection{Computational Fluid Dynamics (CFD)}
 
-Computational fluid dynamics simulations are computer simulations of fluid flow. They are used to analyse and solve problems in fluid flow, heat transfer and similar activities. They rely on heavy software and computational power to simulate difficult situations which are hard to simulate experimentally. 
+Computational fluid dynamics simulations are computer simulations of fluid flow. They are used to analyse and solve problems in fluid flow, heat transfer and similar activities. They rely on heavy software and computational power to simulate difficult situations which are hard to simulate experimentally \cite{versteeg2007computational}. 
 
-It involves a lot of physics equations, especially the Navier stokes and the Reynolds equations, to calculate pressure velocity, temperature, and density of a fluid over time in different situations, from which drag can also be calculated. It is very important in various industries: Aerodynamics (e.g., aircraft design, drag reduction), Automotive engineering (e.g., optimizing car shapes for fuel efficiency), Energy (e.g., modeling wind turbines, heat exchangers), Medicine (e.g., studying blood flow in arteries).
+It involves a lot of physics equations, especially the Navier stokes and the Reynolds equations, to calculate pressure velocity, temperature, and density of a fluid over time in different situations, from which drag can also be calculated \cite{white2015fluid}. It is very important in various industries: Aerodynamics (e.g., aircraft design, drag reduction), Automotive engineering (e.g., optimizing car shapes for fuel efficiency), Energy (e.g., modeling wind turbines, heat exchangers), Medicine (e.g., studying blood flow in arteries) \cite{anderson2016fundamentals}.
 
 \subsubsection{K-Epsilon Model}
 
-CFD simulations run on different models, the model that I am choosing is the K-epsilon model, it is a very popular model used in a lot of amateur and beginner simulations, which don't require a niche model.
+CFD simulations run on different models, the model that I am choosing is the K-epsilon model, it is a very popular model used in a lot of amateur and beginner simulations, which don't require a niche model \cite{blazek2015computational}.
 
-The k-episode model was developed by Launder and Spalding in 1974 to improve on older models like the mixing length model. It offers a more general and practical approach to modeling complex turbulence and flows. It majorly uses two equations, one for turbulent kinetic energy and one for dissipation rates.
+The k-episode model was developed by Launder and Spalding in 1974 to improve on older models like the mixing length model. It offers a more general and practical approach to modeling complex turbulence and flows. It majorly uses two equations, one for turbulent kinetic energy and one for dissipation rates \cite{launder1974application}.
 
-This model is often used in simulating airflows in HVAC systems and combustion in engines, analysing drag and lift on vehicles, Modeling the travel of particles like pollutant through water and the atmosphere and studying flow in pipes, channels and bridges
+This model is often used in simulating airflows in HVAC systems and combustion in engines, analysing drag and lift on vehicles, Modeling the travel of particles like pollutant through water and the atmosphere and studying flow in pipes, channels and bridges \cite{versteeg2007computational}
 
-The model predicts the mean flow characteristics of flows, by solving the two equations, it is assuming isotropic turbulence, which means the turbulent viscosity is equal across every direction, this makes it very suitable for many engineering applications. Though It does struggle with the investigated complex geometries.
+The model predicts the mean flow characteristics of flows, by solving the two equations, it is assuming isotropic turbulence, which means the turbulent viscosity is equal across every direction, this makes it very suitable for many engineering applications. Though It does struggle with the investigated complex geometries \cite{launder1974application}.
 
 \subsubsection{Why is the K-Epsilon Model Good?}
 
-Because the model only uses two equations to calculate the simulation its simplisity matches its power. It is great for a wide range of reynolds number of flows, so it is perfect for simulating turbulence. The model shows to converge correctly, in simulation converging is referred to when multible sennerios and calculations give the same answer which means the simulation has finished. And as the model has been used since 1974 it has had decates of testing, impovements and validation
+Because the model only uses two equations to calculate the simulation its simplisity matches its power. It is great for a wide range of reynolds number of flows, so it is perfect for simulating turbulence. The model shows to converge correctly, in simulation converging is referred to when multible sennerios and calculations give the same answer which means the simulation has finished. And as the model has been used since 1974 it has had decates of testing, impovements and validation \cite{launder1974application}
 
-There are better models out ther now like the k-omega sst, which can handle bigger pressure drops accros the simulation, but that model is even more power hungry and expensive to run. The k-epsilon model is not very good at calculating swirls and flows including strong separation in the fluid.
+There are better models out ther now like the k-omega sst, which can handle bigger pressure drops accros the simulation, but that model is even more power hungry and expensive to run. The k-epsilon model is not very good at calculating swirls and flows including strong separation in the fluid \cite{blazek2015computational}.
 
 \subsubsection{Why is ANSYS Good?}
 
-I am using a student version of the ANSYS software which is running all the simulations, ANSYS is such a good choice, because it has incredible horizon of simulation choices, it offers more then just fluid dynamics, but it can also simulate things like heat transfer and electromagnetic fields. This makes it very appealing for engineers. 
+I am using a student version of the ANSYS software which is running all the simulations, ANSYS is such a good choice, because it has incredible horizon of simulation choices, it offers more then just fluid dynamics, but it can also simulate things like heat transfer and electromagnetic fields. This makes it very appealing for engineers \cite{ansys2023fluent}. 
 
-Over 17.000 companies use asyns, including racign and rocket teams liek NASA and redbull racing.,Proving acceptance. 
+Over 17.000 companies use asyns, including racign and rocket teams liek NASA and redbull racing.,Proving acceptance \cite{ansys2023fluent}. 
 
 \subsubsection{Mesh Density}
 
-This investigation is investigating the affect of mesh density on time, now why does mesh density actually matter?
+This investigation is investigating the affect of mesh density on time, now why does mesh density actually matter \cite{versteeg2007computational}?
 
 \begin{figure}[H]
     \centering
@@ -138,11 +140,11 @@ This investigation is investigating the affect of mesh density on time, now why 
     \label{fig:mesh_example}
 \end{figure}
 
-above is a image of the mesh of one of the complex objects simulated in the experiment. Mesh density can metaphorically be refferet to as resolution, every one of the triangles above is a pixel on A screen, the more triangles your have per area like in the middle right of the image the better the resolution. A simulation calculates the physical behavior of every triangle. Particles are very small which all follow the laws of physics, and the closer the triangles get to the size of the particle the more accurate does the simulation get, but that also means more calculations need to be doen, and possible more time will be allocated to the simulation.
+above is a image of the mesh of one of the complex objects simulated in the experiment. Mesh density can metaphorically be refferet to as resolution, every one of the triangles above is a pixel on A screen, the more triangles your have per area like in the middle right of the image the better the resolution. A simulation calculates the physical behavior of every triangle. Particles are very small which all follow the laws of physics, and the closer the triangles get to the size of the particle the more accurate does the simulation get, but that also means more calculations need to be doen, and possible more time will be allocated to the simulation \cite{blazek2015computational}.
 
 \subsubsection{Why does the Amount of Iterations Matter?}
 
-In simulation iterations refers to the amount of scenarios,The scenarios refer to testing different temperatures, velocities and pressure in different places. for which all calculations are done. Like in statistics the bigger the sample size the smaller the random error. And the standart diviation of all findings will get smaller aswell. 
+In simulation iterations refers to the amount of scenarios,The scenarios refer to testing different temperatures, velocities and pressure in different places. for which all calculations are done. Like in statistics the bigger the sample size the smaller the random error. And the standart diviation of all findings will get smaller aswell \cite{versteeg2007computational}. 
 
 \begin{figure}[H]
     \centering
@@ -151,40 +153,40 @@ In simulation iterations refers to the amount of scenarios,The scenarios refer t
     \label{fig:convergence}
 \end{figure}
 
-In the graph above, I have displayed the simulated drag results y against the amount of iterations x, visible is that after 20 itterations the simulated drag is not really changing this is reffered to as converging. But before testing all scenarios its uncertain if the values will change, so there is a incentive to have almost infinite amount of itterations. But for every itteration a complete calculation of all physical behaviours needs to be done. so more itterations mean more time.
+In the graph above, I have displayed the simulated drag results y against the amount of iterations x, visible is that after 20 itterations the simulated drag is not really changing this is reffered to as converging. But before testing all scenarios its uncertain if the values will change, so there is a incentive to have almost infinite amount of itterations. But for every itteration a complete calculation of all physical behaviours needs to be done. so more itterations mean more time \cite{blazek2015computational}.
 
 \subsubsection{Residuals}
 
-One of the constants of this investigation is residuals, residuals govern how far the simulation will run until the values converge. they do this by reflecting the imbalance in the conservation laws, mass enegy…, in the navier stokes equations, low residulas means more pressice measurements and high residuals mean low precition. The residuals therefore basically define too how many significant figures the calculation are hold truthfully, the experiment has all residuals defined to 5 digit accuracy, because when running tests at 6 digit accuracy, the test did not converge even after 1000 itteration and as seen in the graph above for the iterations this means the simulations could have taken even longer and return no relativly more valueble insights. 
+One of the constants of this investigation is residuals, residuals govern how far the simulation will run until the values converge. they do this by reflecting the imbalance in the conservation laws, mass enegy…, in the navier stokes equations, low residulas means more pressice measurements and high residuals mean low precition \cite{white2015fluid}. The residuals therefore basically define too how many significant figures the calculation are hold truthfully, the experiment has all residuals defined to 5 digit accuracy, because when running tests at 6 digit accuracy, the test did not converge even after 1000 itteration and as seen in the graph above for the iterations this means the simulations could have taken even longer and return no relativly more valueble insights \cite{versteeg2007computational}. 
 
-All simulations in this experiment are run to either all residuals converge, which means the number calculated is the number the computer thinks is most accurate, or to 1000 itteration, because that can indicate that there is a error with the geometry or the mesh of the simulation and the simulations is likely faulted, or and can not get more accurate.
+All simulations in this experiment are run to either all residuals converge, which means the number calculated is the number the computer thinks is most accurate, or to 1000 itteration, because that can indicate that there is a error with the geometry or the mesh of the simulation and the simulations is likely faulted, or and can not get more accurate \cite{ansys2023fluent}.
 
 
 \section{Literature Review}
 
 \subsection{The Physics of Fluid Flow}
 
-IB assumes fully laminar flow, for engeering this assumption might not result in pleasing result. Because laminar flow only happens in very viscous fluids or in very stream line bodies. In refrence to fluid drag this means only drag in the form of skin friction will get calculated.
+IB assumes fully laminar flow, for engeering this assumption might not result in pleasing result. Because laminar flow only happens in very viscous fluids or in very stream line bodies. In refrence to fluid drag this means only drag in the form of skin friction will get calculated \cite{tsokos2014physics}.
 
-Turbulent flow means the the fluid creates chaotic and swirling eddies, for egneniers turbulent flow is often very real. It applies at high velocities or when the geometry are more complex and the viscosity of fluids is low liek air. In reference to fluid drag turbulence introduces new kinds of drag like pressure drag, this drag is created when the eddies create flow separation allongsaide the object, so turbulent calculations need to consider the stream lines of objects, referred to as cd, theIBformula does not consider this at all and only considers drag created directly on the front face of the objects. 
+Turbulent flow means the the fluid creates chaotic and swirling eddies, for egneniers turbulent flow is often very real. It applies at high velocities or when the geometry are more complex and the viscosity of fluids is low liek air. In reference to fluid drag turbulence introduces new kinds of drag like pressure drag, this drag is created when the eddies create flow separation allongsaide the object, so turbulent calculations need to consider the stream lines of objects, referred to as cd, theIBformula does not consider this at all and only considers drag created directly on the front face of the objects \cite{anderson2016fundamentals}. 
 
 \subsection{Computational Fluid Dynamics (CFD)}
 
-The k epsilon model uses two equations to calculate the physical behaviour of particles.
+The k epsilon model uses two equations to calculate the physical behaviour of particles \cite{launder1974application}.
 the navier stokes equation: 
 \begin{align}
 \text{Continuity: } \nabla \cdot \vec{u} &= 0\\
 \text{Momentum: } \rho\left(\frac{\partial \vec{u}}{\partial t} + \vec{u} \cdot \nabla \vec{u}\right) &= -\nabla p + \mu \nabla^2 \vec{u} + \vec{f}
 \end{align}
 
-Is what physicist would use to do such calculations, the IB fluid drag formula uses a simplification of this formula, because the equations are nonlinear and interdependent it is very difficult to calculate specific behaviour especially when turbulent flow is introduced, for the same reason the k-epsilon model actually also uses a simplicication of this equation aswell.
+Is what physicist would use to do such calculations, the IB fluid drag formula uses a simplification of this formula, because the equations are nonlinear and interdependent it is very difficult to calculate specific behaviour especially when turbulent flow is introduced, for the same reason the k-epsilon model actually also uses a simplicication of this equation aswell \cite{white2015fluid}.
 
-The model uses the reynolds average stokes equations,
+The model uses the reynolds average stokes equations \cite{launder1974application},
 \begin{equation}
 \rho\left(\frac{\partial \overline{u_i}}{\partial t} + \overline{u_j}\frac{\partial \overline{u_i}}{\partial x_j}\right) = -\frac{\partial \overline{p}}{\partial x_i} + \mu\frac{\partial^2 \overline{u_i}}{\partial x_j^2} - \frac{\partial \rho\overline{u_i' u_j'}}{\partial x_j}
 \end{equation}
 
-This equation introduces turbulence and averages the stokes equations making it possible to calculate the behavoir of particles,  this equation is viewing mean and fluctuating variables at the same time, this means that from the mesh picture the surrounding triangles also affect the individuel triangle, very muhc like how all particle affect each other.
+This equation introduces turbulence and averages the stokes equations making it possible to calculate the behavoir of particles,  this equation is viewing mean and fluctuating variables at the same time, this means that from the mesh picture the surrounding triangles also affect the individuel triangle, very muhc like how all particle affect each other \cite{munson2016fundamentals}.
 
 \section{Methodology}
 
@@ -194,17 +196,17 @@ The value I am finding through the simulation, will be compared to a highly exte
 
 \subsection{Computational Simulation}
 
-Using ANSYS, a computer simulation software, the drag forces experienced by the objects will be simulated. I will be changin two variables to see the affect on the accuracy of the simulation outcome and how long the simulation needs to finish, Mesh density and the amount of iterations, because I predicted them to have the biggest impact on the time taken for the simulations to finish. I will use this formula $F_d = \frac{c_d \rho u^2 A}{2}$ to compare my simulated drags forces, to forces I calculated using the Cd aquired experimentaly. 
+Using ANSYS, a computer simulation software, the drag forces experienced by the objects will be simulated. I will be changin two variables to see the affect on the accuracy of the simulation outcome and how long the simulation needs to finish, Mesh density and the amount of iterations, because I predicted them to have the biggest impact on the time taken for the simulations to finish. I will use this formula $F_d = \frac{c_d \rho u^2 A}{2}$ to compare my simulated drags forces, to forces I calculated using the Cd aquired experimentaly \cite{anderson2016fundamentals}. 
 
 To be sure that all other variables are sensible I have set them as follows. The air speed at which the drag will be simulated will be 100ms$^{-1}$, this is because drag will increase significantly at close to mock numbers due to the increased pressure of the schock cone, but the drag at low velocity is very small and sometimes insignificant, exactly what value is chosen is not important, as long it is constant in the comparison calculations. 
 
-I have set the air density used in the simulation to 1.225 kgm$^{-3}$ which is the standart setting in ANSYS, but is also standart air pressure, this variable could also be changed, it just needs to be constant in the comparison though.
+I have set the air density used in the simulation to 1.225 kgm$^{-3}$ which is the standart setting in ANSYS, but is also standart air pressure, this variable could also be changed, it just needs to be constant in the comparison though \cite{ib_physics_data}.
 
  I have set the area of the geometries facing the air stream to be equal to 1m$^2$; although also this value is arbitrary, I think using 1m$^2$ will be helpful in the future, when making predictions on other geometries, as it is base one.
 
 I will be testing different mesh densities, which I calculate by the number of mesh elements divided by the volume of the perimeter in which the simulation is taking place, as that volume is also constant across all simulations I will refer to the mesh only by the amount of elements.
 
-I am not changing the total amounts of mesh elements directly, instead I am changing the size of the elements close to the object. This is common use and is useful, because I would not expect allot of physics behaviour far away from the geometrie for which I want to calculate the drag, 
+I am not changing the total amounts of mesh elements directly, instead I am changing the size of the elements close to the object. This is common use and is useful, because I would not expect allot of physics behaviour far away from the geometrie for which I want to calculate the drag \cite{versteeg2007computational}, 
 
 \begin{figure}[H]
     \centering
@@ -215,7 +217,7 @@ I am not changing the total amounts of mesh elements directly, instead I am chan
 
 As seen above the flow is mostly just red further away from the cube, this indicated that there is no physics behaviour happing there. I have labelled the msot dense mesh 5 and the least dense mesh 1, from my hypothesis I would expect Mesh 5 to take the longest and have the most accurate results, although not significantly more accurate then 3 or 4. 
 
-The general mesh size of the simulation parameters is 1 m$^3$, this means that calculations are done for that 1 m$^3$ and the simulation assumes one particle has the size of 1 m$^3$ and it will calculate a mean physics behaviour for that whole area. I have set the most accurate mesh elements to be 0.05m$^3$ big directly next to the geometries, this is significantly smaller than both the general mesh size and the geometrie, so it should give accrued calculation results. Because if we go back to the screen analagie, it is only possible to show a elephant for example if the pixels are smaller than the elephant which I am trying to display, in this case the mesh element size is smaller then the geometry so it should be possible to simulate it.
+The general mesh size of the simulation parameters is 1 m$^3$, this means that calculations are done for that 1 m$^3$ and the simulation assumes one particle has the size of 1 m$^3$ and it will calculate a mean physics behaviour for that whole area. I have set the most accurate mesh elements to be 0.05m$^3$ big directly next to the geometries, this is significantly smaller than both the general mesh size and the geometrie, so it should give accrued calculation results \cite{blazek2015computational}. Because if we go back to the screen analagie, it is only possible to show a elephant for example if the pixels are smaller than the elephant which I am trying to display, in this case the mesh element size is smaller then the geometry so it should be possible to simulate it.
 
 \begin{table}[H]
 \centering
@@ -301,11 +303,11 @@ This is what I can view when the simulation is running, already from this one ca
 \]
 
 \[
-c_d^{\text{cube}} = 1.05 \quad \text{[1]}
+c_d^{\text{cube}} = 1.05 \cite{anderson2016fundamentals}
 \]
 This is the table of measurements found for the cube. Now we can see that  after the simulations finished so after all iterations, and with the highest mesh density, the simulation has found accurate forces up to 99.94\% also to be seen is that atleast until ⅗ of the total simulation the accuracy was already atleast 99.93\% so one might say that the simulation did not need to be completed that long, this error is smaller than the significant figures in my database. Even the 2 \% error from the less dense mesh is accurate enough to make predictions instead of using a air tunnel. 
 
-The computer seems to find it more difficult to start calculating complex meshes, because in the more dense meshes the start of the simulation gives far different values than the end does, this difference decrease in less dense meshes, but this is also because measurements for those meshes where taken at iterations, whichs absolut number of iterations was smaller.
+The computer seems to find it more difficult to start calculating complex meshes, because in the more dense meshes the start of the simulation gives far different values than the end does, this difference decrease in less dense meshes, but this is also because measurements for those meshes where taken at iterations, whichs absolut number of iterations was smaller \cite{versteeg2007computational}.
 
 \begin{table}[H]
 \centering
@@ -549,7 +551,7 @@ Unfortunately some of the geometries which I had experimental data to test again
 
 \section{References}
 
-\textit{- Citing academic papers, CFD textbooks, and engineering articles.}
+\printbibliography[heading=none]
 
 Assets:
 
