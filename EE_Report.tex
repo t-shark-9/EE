@@ -89,15 +89,15 @@ Impact of Mesh Density and Iterations on Turbulent Flow Prediction Accuracy for 
 
 In the k-epsilon computational model in ANSYS how does the time invested into calculation heavy mesh and iteration affect the accuracy of prediction of turbulent flow characteristic fpr complex geometries?
 
-In this experiment I will try and compare diffrent simulation set ups, so diffrent mesh densities and amounts of itterations, against experimental values of fluid drag found experimentaly. Through this I try to evalute how accurate simulations can get or should get in reference to the values obtained in the wing tunnel.
+In this experiment I will try and compare diffrent simulation set ups, so diffrent mesh densities and amounts of itterations, against experimental values of drag coefficeance found experimentaly. Through this I try to evalute how accurate simulations can get or should get in reference to the values obtained in the wing tunnel.
 
-Now it might seem like I have two depend variables and two independent, but actually I am measuring the wasted time from simulating to no accuracy benefit created by the variables instead, I need both of them to understand what is actually waisting the time. I am measuring the time waisted, because our computers are consuming powers in watt, which means the longer the simulation takes the more power is consumed, assuming the time is wasted because the simulation is not getting more accurate as I stated this would mean the power is wasted aswell. This ofcourse requires the assumption that all computtions did require the same power.
+Now it might seem like I have two depend variables and two independent, but actually I am measuring the wasted time from simulating for no accuracy benefit created by the variables instead, I need both of them to understand what is actually waisting the time. I am measuring the time waisted, because our computers are consuming powers in watt, which means the longer the simulation takes the more power is consumed, assuming the time is wasted because the simulation is not getting more accurate as I stated this would mean the power is wasted aswell. This ofcourse requires the assumption that all computtions did require the same power.
 
 \subsection{Background}
 
 \subsubsection{IB Fluid Drag Formula}
 
-The IB supplies a simplified equation and theory behind fluid drags on objects, $F_{drag} = 6\pi\eta rv$, which assumes all objects are round, and flow is laminar, this creates allot of limitations which simulations eliminate.
+TheIBsupplies a simplified equation and theory behind fluid drags on objects, $F_{drag} = 6\pi\eta rv$, which assumes all objects are round, and flow is laminar, this creates allot of limitations which simulations eliminate.
 
 \subsubsection{Computational Fluid Dynamics (CFD)}
 
@@ -133,7 +133,7 @@ This investigation is investigating the affect of mesh density on time, now why 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{image7.png}
+    \includegraphics[width=0.8\textwidth]{image9.png}
     \caption{Mesh visualization of a complex geometry showing triangular elements with varying density}
     \label{fig:mesh_example}
 \end{figure}
@@ -146,7 +146,7 @@ In simulation iterations refers to the amount of scenarios,The scenarios refer t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{image6.png}
+    \includegraphics[width=0.8\textwidth]{image8.png}
     \caption{Simulated drag results versus iteration number showing convergence behavior}
     \label{fig:convergence}
 \end{figure}
@@ -251,7 +251,9 @@ In the last row I have writin the total amount of elements, this number is not s
 \end{tabular}
 \end{table}
 
-218* 1/5 = 44
+\[
+\frac{\text{Total Iterations}}{\text{Steps}} = \frac{218}{5} = 43.6 \approx 44
+\]
 
 \section{Results and Discussion}
 
@@ -259,7 +261,7 @@ In the last row I have writin the total amount of elements, this number is not s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{image6.png}
+    \includegraphics[width=0.8\textwidth]{image8.png}
     \caption{Simulation monitoring display during runtime}
     \label{fig:simulation_display}
 \end{figure}
@@ -290,21 +292,29 @@ This is what I can view when the simulation is running, already from this one ca
 \end{tabular}
 }
 \end{table}
+\[
+\text{Expected }  F_d = \frac{c_d \, \rho \, u^2 \, A}{2} = \frac{1.05 \times 1.225 \times (100)^2 \times 1}{2} = 6431.25 \, \text{N}
+\]
 
-1-6.43E+03 /5,72E+03 = 11.01 precent
+\[
+\text{\% Error} = 1 - \frac{\text{Expected}}{\text{Simulated}} = 1 - \frac{6431.25}{5723.3} \approx 0.1101 = 11.01\%
+\]
 
+\[
+c_d^{\text{cube}} = 1.05 \quad \text{[1]}
+\]
 This is the table of measurements found for the cube. Now we can see that  after the simulations finished so after all iterations, and with the highest mesh density, the simulation has found accurate forces up to 99.94\% also to be seen is that atleast until ⅗ of the total simulation the accuracy was already atleast 99.93\% so one might say that the simulation did not need to be completed that long, this error is smaller than the significant figures in my database. Even the 2 \% error from the less dense mesh is accurate enough to make predictions instead of using a air tunnel. 
 
 The computer seems to find it more difficult to start calculating complex meshes, because in the more dense meshes the start of the simulation gives far different values than the end does, this difference decrease in less dense meshes, but this is also because measurements for those meshes where taken at iterations, whichs absolut number of iterations was smaller.
 
 \begin{table}[H]
 \centering
-\caption{Amount of mesh elements versus error for cube simulation}
+\caption{Amount of mesh elements versus average error for cube simulation}
 \label{tab:cube_elements_error}
 \begin{tabular}{|c|c|}
 \hline
 \rowcolor{lightblue}
-\textbf{Amount of mesh elements} & \textbf{\% error} \\
+\textbf{Amount of mesh elements} & \textbf{\% avg. error}\\
 \hline
 52168 & 11.00\% \\
 \hline
@@ -319,9 +329,13 @@ The computer seems to find it more difficult to start calculating complex meshes
 \end{tabular}
 \end{table}
 
+\[
+\text{Avg.\% Error} = \frac{11.01\% + 11.04\% + 11.01\% + 10.97\% + 10.99\%}{5} = \frac{55.02\%}{5} = 11.00\%
+\]
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{image12.png}
+\includegraphics[width=0.8\textwidth]{image14.png}
 \caption{Average \%error against amount of mesh elements for the cube}
 \label{fig:cube_elements_error}
 \end{figure}
@@ -335,33 +349,33 @@ I have choosen to grapght the percentage error of each Mesh interval against the
 \begin{tabular}{|c|c|}
 \hline
 \rowcolor{lightblue}
-\textbf{Amount of mesh elements} & \textbf{\% error} \\
+\textbf{avg. iteration number}& \textbf{\% error} \\
 \hline
-52168 & 11.00\% \\
+103& 6.57\%\\
 \hline
-68605 & 7.13\% \\
+206& 5.31\%\\
 \hline
-97258 & 5.38\% \\
+308& 5.13\%\\
 \hline
-153590 & 2.26\% \\
+411& 5.10\%\\
 \hline
-341044 & 1.44\% \\
+514& 5.10\%\\
 \hline
 \end{tabular}
 \end{table}
-
+\[
+\text{Avg. Error} = \frac{11.01\% + 6.96\% + 5.67\% + 3.19\% + 6.04\%}{5}= 6.574\% \approx 6.57\%
+\]
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{image13.png}
+    \includegraphics[width=0.8\textwidth]{Bildschirmfoto 2025-08-24 um 14.13.37.png}
     \caption{Average percentage error against average amount of iterations for cube}
     \label{fig:cube_iterations_error}
 \end{figure}
 
-Figure \ref{fig:cube_iterations_error} This graph compares 
+Figure \ref{fig:cube_iterations_error} This graph compares how the percentage error decreases, as the average amount of iterations is increasing. this graph is very use full, because it can compare against simulations, which both did not converge, and converged early.
 
 \subsection{Results for Other Geometries}
-
-there are graphs in the html which should get impeddet here aswell, for every tabele the coording graph
 
 \subsubsection{Cone Results}
 
@@ -416,7 +430,6 @@ there are graphs in the html which should get impeddet here aswell, for every ta
 \end{tabular}
 }
 \end{table}
-
 \subsubsection{Streamline Body Results}
 
 \begin{table}[H]
@@ -470,8 +483,7 @@ there are graphs in the html which should get impeddet here aswell, for every ta
 \end{tabular}
 }
 \end{table}
-
-Some investigated objects showed outliers where simulated results became more accurate with fewer iterations or decreasing mesh density. These are considered outliers because simulations continue until reaching most accurate results (the basis of residuals). When less dense meshes created more accurate results, this was likely caused by complex geometry modeling difficulties and insufficient boundary conditions. These outliers are excluded from final results.
+Some investigated objects (long cylinder/ stream line body) showed outliers where simulated results became more accurate with fewer iterations or decreasing mesh density. These are considered outliers because simulations continue until reaching most accurate results (the basis of residuals). When less dense meshes created more accurate results, this was likely caused by complex geometry modeling difficulties and insufficient boundary conditions. These outliers are excluded from final results.
 
 \subsection{Overall Results Summary}
 
@@ -482,7 +494,7 @@ Some investigated objects showed outliers where simulated results became more ac
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \rowcolor{lightblue}
-\textbf{Avg Iterations} & \textbf{\% Error} & \textbf{Mesh Elements} & \textbf{\% Error} & \textbf{Time/Iteration (s)} \\
+\textbf{Avg. Iterations}& \textbf{\% Error} & \textbf{Avg. Mesh Elements}& \textbf{\% Error} & \textbf{Time/Iteration (s)} \\
 \hline
 77 & 14.29\% & 114,025 & 14.40\% & 14 \\
 \hline
@@ -497,7 +509,7 @@ Some investigated objects showed outliers where simulated results became more ac
 \end{tabular}
 \end{table}
 
-Average time per iteration was recorded because reading total time would be extremely difficult. Time per iteration correlates with mesh density, showing higher mesh density requires longer simulation time. Although generally the final iterations take less time and iterations don't all require equal time, averages were used without decimal precision since millisecond variations could be random and noisy.
+Average time per iteration was recorded when simulations where done . Time per iteration correlates with mesh density, showing higher mesh density requires longer simulation time. Although generally the final iterations take less time and iterations don't all require equal time, averages were used without decimal precision since millisecond variations could be random and noisy.
 
 \begin{figure}[H]
     \centering
@@ -506,7 +518,7 @@ Average time per iteration was recorded because reading total time would be extr
     \label{fig:time_vs_error}
 \end{figure}
 
-When looking at the final results it is very clear that the simulations go on for a very long time, even if not allot of accuracy is gained, the function of increasing accuracy is assemptoting somewhere to 11 \%, and especially after the 3 hour mark not allot of accuracy is gained and allot of valuable energy is waisted. So considering that my experimental values where only to 3 significant figures I have stated that a change in less than 0.02\% is not worth the time as it is insignificant to 3 significant figures, as a result instead of investing more than 10000 seconds on average for a simulaton only 4592 seconds would arguable give good enough results, this would more than half the time and save so much energy, if I go back reducing the accuracy for both variables by 0.01\% this means only 264 iterations on average is how long a simulation should run.
+When looking at the final results it is very clear that the simulations go on for a very long time, even if not allot of accuracy is gained, the function of increasing accuracy is assemptoting somewhere to 11 \%, and especially after the 3 hour mark not allot of accuracy is gained and allot of valuable energy is waisted. the experimental values where only to 3 significant figures a change in less than 0.02\% is not worth the time as it is insignificant to 3 significant figures, as a result instead of investing more than 10000 seconds on average for a simulaton only 4592 seconds would arguable give good enough results, this would more than half the time and save so much energy, reducing the accuracy for both variables by 0.01\% this means only 264 iterations on average is how long a simulation should run.
 
 \begin{figure}[H]
 \centering
@@ -522,53 +534,12 @@ whilst I found that 30234 mesh elements are sufficient for a volume of 1936m3.
 \includegraphics[width=0.8\textwidth]{image2.png}
 \caption{Average amount of mesh elements against average \% error}
 \label{fig:mesh_final}
-\end{figure}
+\end{figure}\textit{
+The mesh density and amount of itterations is directly inversly correlated with % error, 
+time is directy corrolated to itterations and mesh density, 
+investing more time into the simulation will give significantly more accurate results at the start, and less signficantly more acurate results at the end.
+it should be revised how long a simulation should urun for until it is unnesacary.}
 
-\section{Conclusion}
-
-After finishing all tables this are the average iterations and the average mesh with their according average \%error across all simulations,
-
-\begin{table}[H]
-\centering
-\caption{All average \% iteration against all \% error and all average mesh elements against average \% error}
-\label{tab:final_summary}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\rowcolor{lightblue}
-\textbf{Average amount of iteration} & \textbf{\% error} & \textbf{Amount of mesh elements} & \textbf{\%error} & \textbf{time/ iteration} \\
-\hline
-77 & 14.29\% & 114.025 & 14.40\% & 14 \\
-\hline
-154 & 11.42\% & 119.628 & 13.08\% & 14.5 \\
-\hline
-231 & 11.26\% & 133.739 & 13.51\% & 14 \\
-\hline
-308 & 11.24\% & 171.610 & 10.86\% & 15 \\
-\hline
-385 & 11.24\% & 308.837 & 7.61\% & 28.5 \\
-\hline
-\end{tabular}
-}
-\end{table}
-
-Throughout the recording of the results I also recorder the average time it took to take to simulate one iteration, I used averages, because reading the total time would have been extremely hard. I compared them to mesh density 
-Just adding the time per iteration on the right. This shows a correlation, where higher mesh density means longer time to simulate.
-And because it is time per iteration, this means that time per iteration is directly related, even though I have to say that generally the last few iterations take less time and not every iterations takes the same amount of time, that is why I used averages and I went to no decimal place in my recordings, because variation in the milliseconds could be random and noisy.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{image6.png}
-\caption{Across all geometries, time against average\% error}
-\label{fig:time_vs_error}
-\end{figure}
-
-I have realized when analysing my findings that two of the investigated objects show outliers, where the simulated number gets more accurate with less iterations or with decreasing mesh density, I think I can rightfully say that they are outliers, because the simulation will carry on until the simulation thinks it has reached the most accurate result, this is the base idea of the residuals. And when the less dense mesh created more accurate results this was also a outlier as this was most probably caused, because the geometry was very complex to model for me and there were not allot of boundaries given. I have excluded these from my final results as a result.
-    \item K-epsilon turbulence modeling provides substantially better accuracy than laminar assumptions for complex geometries
-    \item Computational resources can be optimized without sacrificing engineering-relevant accuracy
-\end{itemize}
-
-This research provides valuable insights for engineers and researchers seeking to optimize CFD simulation parameters, ultimately contributing to more sustainable computational practices in fluid dynamics analysis.
 
 \section{Improvements}
 
@@ -578,7 +549,7 @@ Unfortunately some of the geometries which I had experimental data to test again
 
 \section{References}
 
-- Citing academic papers, CFD textbooks, and engineering articles.
+\textit{- Citing academic papers, CFD textbooks, and engineering articles.}
 
 Assets:
 
